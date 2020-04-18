@@ -1,78 +1,75 @@
 #include "Adafruit_Sensor.h"
 
+#include <iostream>
+
 /**************************************************************************/
 /*!
     @brief  Prints sensor information to serial console
 */
 /**************************************************************************/
-void Adafruit_Sensor::printSensorDetails(void) {
-  sensor_t sensor;
-  getSensor(&sensor);
-  Serial.println(F("------------------------------------"));
-  Serial.print(F("Sensor:       "));
-  Serial.println(sensor.name);
-  Serial.print(F("Type:         "));
-  switch ((sensors_type_t)sensor.type) {
-  case SENSOR_TYPE_ACCELEROMETER:
-    Serial.print(F("Acceleration (m/s2)"));
-    break;
-  case SENSOR_TYPE_MAGNETIC_FIELD:
-    Serial.print(F("Magnetic (uT)"));
-    break;
-  case SENSOR_TYPE_ORIENTATION:
-    Serial.print(F("Orientation (degrees)"));
-    break;
-  case SENSOR_TYPE_GYROSCOPE:
-    Serial.print(F("Gyroscopic (rad/s)"));
-    break;
-  case SENSOR_TYPE_LIGHT:
-    Serial.print(F("Light (lux)"));
-    break;
-  case SENSOR_TYPE_PRESSURE:
-    Serial.print(F("Pressure (hPa)"));
-    break;
-  case SENSOR_TYPE_PROXIMITY:
-    Serial.print(F("Distance (cm)"));
-    break;
-  case SENSOR_TYPE_GRAVITY:
-    Serial.print(F("Gravity (m/s2)"));
-    break;
-  case SENSOR_TYPE_LINEAR_ACCELERATION:
-    Serial.print(F("Linear Acceleration (m/s2)"));
-    break;
-  case SENSOR_TYPE_ROTATION_VECTOR:
-    Serial.print(F("Rotation vector"));
-    break;
-  case SENSOR_TYPE_RELATIVE_HUMIDITY:
-    Serial.print(F("Relative Humidity (%)"));
-    break;
-  case SENSOR_TYPE_AMBIENT_TEMPERATURE:
-    Serial.print(F("Ambient Temp (C)"));
-    break;
-  case SENSOR_TYPE_OBJECT_TEMPERATURE:
-    Serial.print(F("Object Temp (C)"));
-    break;
-  case SENSOR_TYPE_VOLTAGE:
-    Serial.print(F("Voltage (V)"));
-    break;
-  case SENSOR_TYPE_CURRENT:
-    Serial.print(F("Current (mA)"));
-    break;
-  case SENSOR_TYPE_COLOR:
-    Serial.print(F("Color (RGBA)"));
-    break;
-  }
+void Adafruit_Sensor::printSensorDetails()
+{
+   sensor_t sensor;
+   getSensor(&sensor);
+   std::cout << "------------------------------------" << std::endl;
+   std::cout << "Sensor:       " << sensor.name << std::endl;
+   std::cout << "Type:         ";
+   switch (static_cast<sensors_type_t>(sensor.type)) {
+   case SENSOR_TYPE_ACCELEROMETER:
+      std::cout << "Acceleration (m/s2)";
+      break;
+   case SENSOR_TYPE_MAGNETIC_FIELD:
+      std::cout << "Magnetic (uT)";
+      break;
+   case SENSOR_TYPE_ORIENTATION:
+      std::cout << "Orientation (degrees)";
+      break;
+   case SENSOR_TYPE_GYROSCOPE:
+      std::cout << "Gyroscopic (rad/s)";
+      break;
+   case SENSOR_TYPE_LIGHT:
+      std::cout << "Light (lux)";
+      break;
+   case SENSOR_TYPE_PRESSURE:
+      std::cout << "Pressure (hPa)";
+      break;
+   case SENSOR_TYPE_PROXIMITY:
+      std::cout << "Distance (cm)";
+      break;
+   case SENSOR_TYPE_GRAVITY:
+      std::cout << "Gravity (m/s2)";
+      break;
+   case SENSOR_TYPE_LINEAR_ACCELERATION:
+      std::cout << "Linear Acceleration (m/s2)";
+      break;
+   case SENSOR_TYPE_ROTATION_VECTOR:
+      std::cout << "Rotation vector";
+      break;
+   case SENSOR_TYPE_RELATIVE_HUMIDITY:
+      std::cout << "Relative Humidity (%)";
+      break;
+   case SENSOR_TYPE_AMBIENT_TEMPERATURE:
+      std::cout << "Ambient Temp (C)";
+      break;
+   case SENSOR_TYPE_OBJECT_TEMPERATURE:
+      std::cout << "Object Temp (C)";
+      break;
+   case SENSOR_TYPE_VOLTAGE:
+      std::cout << "Voltage (V)";
+      break;
+   case SENSOR_TYPE_CURRENT:
+      std::cout << "Current (mA)";
+      break;
+   case SENSOR_TYPE_COLOR:
+      std::cout << "Color (RGBA)";
+      break;
+   }
 
-  Serial.println();
-  Serial.print(F("Driver Ver:   "));
-  Serial.println(sensor.version);
-  Serial.print(F("Unique ID:    "));
-  Serial.println(sensor.sensor_id);
-  Serial.print(F("Min Value:    "));
-  Serial.println(sensor.min_value);
-  Serial.print(F("Max Value:    "));
-  Serial.println(sensor.max_value);
-  Serial.print(F("Resolution:   "));
-  Serial.println(sensor.resolution);
-  Serial.println(F("------------------------------------\n"));
+   std::cout << std::endl;
+   std::cout << "Driver Ver:   " << sensor.version << std::endl;
+   std::cout << "Unique ID:    " << sensor.sensor_id << std::endl;
+   std::cout << "Min Value:    " << sensor.min_value << std::endl;
+   std::cout << "Max Value:    " << sensor.max_value << std::endl;
+   std::cout << "Resolution:   " << sensor.resolution << std::endl;
+   std::cout << "------------------------------------" << std::endl;
 }
